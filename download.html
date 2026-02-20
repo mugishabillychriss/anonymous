@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Password Scrambler - Defeat Keyloggers | Live on Firefox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin: 10px;
+            font-size: 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Live Now Badge */
+        .live-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* Download Card */
+        .download-card {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            transition: transform 0.3s;
+            border: 3px solid #ffd700;
+        }
+
+        .download-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .extension-icon {
+            font-size: 6rem;
+            margin-bottom: 20px;
+        }
+
+        .extension-name {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .extension-meta {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .version {
+            background: #e0e0e0;
+            padding: 5px 15px;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            border-radius: 60px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 30px 0;
+            width: 100%;
+            border: 3px solid #ffd700;
+            box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            box-shadow: 0 20px 40px rgba(102,126,234,0.6);
+        }
+
+        .download-btn:active {
+            transform: scale(0.95);
+        }
+
+        .store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #f0f0f0;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .store-badge a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .store-badge a:hover {
+            text-decoration: underline;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Features Card */
+        .features-card {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .features-card h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 15px;
+            transition: background 0.3s;
+        }
+
+        .feature-item:hover {
+            background: #f5f5f5;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-text h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .feature-text p {
+            color: #666;
+        }
+
+        /* Browser Support */
+        .browser-support {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .browser-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .browser {
+            text-align: center;
+        }
+
+        .browser-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .browser-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .browser-status {
+            font-size: 0.9rem;
+            color: #4CAF50;
+        }
+
+        .live-now {
+            background: #4CAF50;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Installation Instructions */
+        .instructions {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .instructions h2 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            align-items: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .step-content p {
+            color: #666;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .faq h2 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .faq-item {
+            margin: 20px 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: #f8f9fa;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question::after {
+            content: '▼';
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 200px;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .success-message.show {
+            display: flex;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            padding: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .footer a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .browser-icons {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <span class="badge">🔒 100% Local</span>
+            <span class="badge">🛡️ Defeats Keyloggers</span>
+            <span class="badge">🇷🇼 Made in Rwanda</span>
+            
+            <h1>Password Scrambler <span class="live-badge">LIVE ON FIREFOX!</span></h1>
+            <p>Type passwords in any order - keyloggers get garbage, websites get your real password!</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Download Card -->
+            <div class="download-card">
+                <div class="extension-icon">🔒</div>
+                <h2 class="extension-name">Password Scrambler</h2>
+                <div class="extension-meta">
+                    <span class="version">Version 1.0.0</span>
+                    <span class="version">Stable</span>
+                </div>
+
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage">
+                    ✅ Thank you! Your download will start shortly.
+                </div>
+
+                <!-- Main Download Button with YOUR link -->
+                <a href="https://addons.mozilla.org/firefox/downloads/file/4700028/password_scrambler_defeat_keyl-1.0.0.zip" 
+                   download="password_scrambler_defeat_keyl-1.0.0.zip"
+                   style="text-decoration: none;">
+                    <button class="download-btn pulse" id="downloadBtn">
+                        📥 Download for Firefox Now
+                    </button>
+                </a>
+
+                <!-- Store Link -->
+                <div class="store-badge">
+                    <span>📦 Also available on:</span>
+                    <a href="https://addons.mozilla.org/firefox/addon/password-scrambler/" target="_blank">
+                        Firefox Add-ons Store →
+                    </a>
+                </div>
+
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Private</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Data Collected</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Offline</div>
+                    </div>
+                </div>
+
+                <p style="color: #666; font-size: 0.9rem;">
+                    📦 File size: ~50KB • Free forever • No account needed
+                </p>
+            </div>
+
+            <!-- Features Card -->
+            <div class="features-card">
+                <h2>✨ Why Choose Password Scrambler?</h2>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">🛡️</div>
+                    <div class="feature-text">
+                        <h3>Defeats Keyloggers</h3>
+                        <p>Hardware & software keyloggers capture scrambled text - completely useless</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-text">
+                        <h3>100% Local</h3>
+                        <p>All data stays on YOUR device. No servers, no tracking, no cloud</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-text">
+                        <h3>Easy to Use</h3>
+                        <p>Clear visual instructions on every login page</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-text">
+                        <h3>Works Anywhere</h3>
+                        <p>Compatible with all major browsers</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-text">
+                        <h3>Lightweight</h3>
+                        <p>Only 50KB - won't slow down your browser</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🇷🇼</div>
+                    <div class="feature-text">
+                        <h3>Made in Rwanda</h3>
+                        <p>Created by Mugisha Billy Chriss, a Rwandan student developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Browser Support -->
+        <div class="browser-support">
+            <h2>🌐 Available on All Major Browsers</h2>
+            <div class="browser-icons">
+                <div class="browser">
+                    <div class="browser-icon">🦊</div>
+                    <div class="browser-name">Firefox</div>
+                    <div class="browser-status"><span class="live-now">LIVE NOW</span></div>
+                </div>
+                <div class="browser">
+                    <div class="browser-icon">🌐</div>
+                    <div class="browser-name">Chrome</div>
+                    <div class="browser-status">⏳ Coming Soon</div>
+                </div>
+                <div class="browser">
+                    <div class="browser-icon">📱</div>
+                    <div class="browser-name">Edge</div>
+                    <div class="browser-status">⏳ Coming Soon</div>
+                </div>
+                <div class="browser">
+                    <div class="browser-icon">🔄</div>
+                    <div class="browser-name">Opera</div>
+                    <div class="browser-status">⏳ Coming Soon</div>
+                </div>
+            </div>
+            <p style="margin-top: 20px; color: #666;">
+                ✅ Firefox version is live now! Other browsers coming soon.
+            </p>
+        </div>
+
+        <!-- Installation Instructions -->
+        <div class="instructions">
+            <h2>📥 How to Install on Firefox</h2>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Click the Download Button</h3>
+                    <p>Click the green download button above to get the extension file (.xpi)</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Open Firefox</h3>
+                    <p>Firefox will ask you to confirm installation - click "Add" or "Install"</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Done! 🎉</h3>
+                    <p>The extension is now installed. Visit any login page to see it in action!</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 30px; padding: 20px; background: #f0f0f0; border-radius: 15px;">
+                🔒 <strong>Your data stays on YOUR device</strong> - No servers, no tracking, no cloud
+            </p>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq">
+            <h2>❓ Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is this really free?</div>
+                <div class="faq-answer">
+                    Yes! Password Scrambler is completely free forever. No premium tiers, no subscriptions, no hidden costs. Created by a student developer for everyone.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Does it work on all websites?</div>
+                <div class="faq-answer">
+                    Yes! It automatically detects any password field on any website. Works perfectly with Gmail, Facebook, banking sites, and more.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can keyloggers still steal my password?</div>
+                <div class="faq-answer">
+                    Keyloggers capture scrambled text like "drdoWssaP" instead of "Password". They get useless garbage, not your real password.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What if I forget the typing order?</div>
+                <div class="faq-answer">
+                    The extension shows you the order every time you click on a password field. You can also view all saved sites in the extension popup.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Do you store my passwords in the cloud?</div>
+                <div class="faq-answer">
+                    Never! All data stays on YOUR device only. No servers, no cloud, no tracking. When you uninstall, everything is gone.
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Created by <strong>Mugisha Billy Chriss</strong> 🇷🇼</p>
+            <p>📍 Kigali, Rwanda | 📧 billy@passwordscrambler.rw</p>
+            <p>
+                <a href="privacy-policy.html">Privacy Policy</a> | 
+                <a href="https://addons.mozilla.org/firefox/addon/password-scrambler/" target="_blank">Firefox Store</a> | 
+                <a href="contact.html">Contact</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9rem;">© 2026 Password Scrambler. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Show success message when download starts
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.add('show');
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 5000);
+            
+            // Track download (optional)
+            console.log('Firefox download started at:', new Date().toISOString());
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                
+                // Close other items
+                document.querySelectorAll('.faq-item').forEach(other => {
+                    if (other !== item) {
+                        other.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Animate stats on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.stat-number').forEach(stat => {
+            stat.style.opacity = '0';
+            stat.style.transform = 'translateY(20px)';
+            stat.style.transition = 'all 0.5s';
+            observer.observe(stat);
+        });
+
+        // Share functionality
+        function shareExtension() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Password Scrambler',
+                    text: 'Type passwords in any order - keyloggers get garbage! Free security extension now live on Firefox.',
+                    url: window.location.href
+                });
+            } else {
+                alert('Share this page: ' + window.location.href);
+            }
+        }
+
+        // Add share button to footer
+        const footer = document.querySelector('.footer p:first-child');
+        const shareBtn = document.createElement('button');
+        shareBtn.textContent = '🔗 Share';
+        shareBtn.style.cssText = `
+            background: #ffd700;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 30px;
+            margin-left: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+        `;
+        shareBtn.onclick = shareExtension;
+        footer.appendChild(shareBtn);
+
+        console.log('Password Scrambler download page loaded with LIVE Firefox link! 🇷🇼');
+    </script>
+</body>
+</html>
