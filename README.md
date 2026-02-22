@@ -7,7 +7,7 @@ Welcome to the collaborative hub of **Mugisha Billy Chriss** and **Manzi Allan**
 
 ## 👥 Meet the Developers
 
-### [Mugisha Billy Chriss](https://github.com)
+### [Mugisha Billy Chriss](https:mugishabillychriss//github.com)
 **Cybersecurity Lead & Full-stack Developer**
 *   🎓 **Certified IBM Cybersecurity Analyst**
 *   🏆 **2nd Place Global Winner** - Huawei ICT Competition 2023
